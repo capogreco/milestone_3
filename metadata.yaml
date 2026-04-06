@@ -1,0 +1,50 @@
+---
+title: "Your Document Title"
+author: "Your Name"
+date: "2025-11-14"
+institution: "Your Institution"
+department: "Your Department"
+degree: "PhD"
+abstract: |
+  Write your abstract here. This is a placeholder for your document abstract.
+  It can span multiple lines and will be formatted appropriately in the final PDF.
+keywords: ["keyword1", "keyword2", "keyword3"]
+lang: en-US
+documentclass: article
+fontsize: 12pt
+geometry:
+  - margin=1in
+linestretch: 1.5
+indent: true
+bibliography: bibliography.bib
+csl: apa.csl
+link-citations: true
+colorlinks: true
+linkcolor: black
+urlcolor: black
+citecolor: black
+header-includes:
+  - |
+    \renewcommand{\thesection}{\arabic{section}}
+    \renewcommand{\thesubsection}{\thesection.\roman{subsection}}
+    \renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+    \setcounter{section}{0}
+  - |
+    ```{=latex}
+    \makeatletter
+    \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\quad}
+    \makeatother
+    ```
+  - |
+    ```{=latex}
+    \usepackage{etoolbox}
+    \pretocmd{\tableofcontents}{\clearpage}{}{}
+    ```
+  - |
+    ```{=latex}
+    % Indent first paragraph too; comment this line if you prefer no indent on first
+    % \usepackage{indentfirst}
+    % Enforce paragraph indenting after template adjustments
+    \AtBeginDocument{\setlength{\parindent}{1.5em}\setlength{\parskip}{0pt}}
+    ```
+---
