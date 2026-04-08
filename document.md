@@ -1,36 +1,15 @@
-# Introduction
+<!--
+Theoretical directions that could anchor this:
 
-This is your document introduction. Start writing your content here.
+1. Serge Tcherepnin's "patch programmability" — arguably the origin of under-determined design in synthesis. Serge modules are famously multi-functional — a slope generator is also an oscillator is also a filter. This is the DNA that flows into Eurorack.
+2. Simondon (On the Mode of Existence of Technical Objects) — his idea of "concretisation" and the individuation of technical objects. Fits your argument about material forms evolving through use.
+3. Pickering (The Mangle of Practice) — material agency, the "dance of agency" between humans and machines. You already cite his cybernetics collection.
+4. Ingold (Making) — "correspondence" with materials rather than imposing form on matter. You cite his ecology paper already.
+5. Pinch & Trocco (Analog Days) — SCOT (Social Construction of Technology) applied specifically to the Moog. "Interpretive flexibility" maps well onto under-determined design.
+6. Suchman (Human-Machine Reconfigurations) — situated action, plans as resources rather than prescriptions. The patch as plan-in-action.-->
 
-You can cite sources using Pandoc citation syntax, for example: [@key] or [@key, p. 42].
+## Modular Synthesis
 
-Use `deno task cite` to quickly insert citations via fuzzy search.
 
-## Background
 
-Add your background section here.
-
-### Subsection Example
-
-This demonstrates the hierarchical structure with numbered sections.
-
-## Methods
-
-Describe your methods here.
-
-## Results
-
-Present your results here.
-
-## Discussion
-
-Discuss your findings here.
-
-## Conclusion
-
-Summarize your conclusions here.
-
-# References
-
-::: {#refs}
-:::
+## Eurorack

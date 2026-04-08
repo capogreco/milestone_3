@@ -1,6 +1,7 @@
 {
   "tasks": {
     "watch": "deno run --allow-read --allow-run watch.ts",
-    "cite": "deno run --allow-read --allow-run cite.ts"
+    "cite": "deno run --allow-read --allow-run cite.ts",
+    "search": "deno run --allow-net --allow-env --allow-read --allow-write search.ts"
   }
 }
