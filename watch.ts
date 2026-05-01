@@ -14,9 +14,18 @@ const WATCH_TARGETS: WatchTarget[] = [
   },
 ];
 
+// Shared files that should trigger a rebuild of all targets when modified.
+const EXTRA_WATCH_PATHS = [
+  "./metadata.yaml",
+  "./bibliography.bib",
+];
+
 console.log("🔄 Starting file watcher for Markdown sources:");
 for (const target of WATCH_TARGETS) {
   console.log(`- ${target.relativePath} -> ${target.outputPdf}`);
+}
+for (const extra of EXTRA_WATCH_PATHS) {
+  console.log(`- ${extra} (rebuilds all)`);
 }
 console.log("📝 Will regenerate PDFs on file changes...\n");
 
@@ -61,15 +70,29 @@ for (const target of WATCH_TARGETS) {
 }
 
 // Watch for file changes
-const watcher = Deno.watchFs(WATCH_TARGETS.map((target) => target.relativePath));
+const watchPaths = [
+  ...WATCH_TARGETS.map((target) => target.relativePath),
+  ...EXTRA_WATCH_PATHS,
+];
+const watcher = Deno.watchFs(watchPaths);
+
+function pathMatches(eventPath: string, watched: string): boolean {
+  return eventPath.includes(watched.replace("./", ""));
+}
 
 for await (const event of watcher) {
   console.log(`📊 Event: ${event.kind}, Paths: ${event.paths}`);
 
   if (event.kind === "modify") {
+    const sharedTouched = EXTRA_WATCH_PATHS.some((extra) =>
+      event.paths.some((p) => pathMatches(p, extra))
+    );
+
     for (const target of WATCH_TARGETS) {
-      if (event.paths.some(path => path.includes(target.relativePath.replace("./", "")))) {
-        console.log(`📄 ${target.relativePath} changed, rebuilding...`);
+      const targetTouched = event.paths.some((p) => pathMatches(p, target.relativePath));
+      if (targetTouched || sharedTouched) {
+        const trigger = targetTouched ? target.relativePath : "shared file";
+        console.log(`📄 ${trigger} changed, rebuilding ${target.outputPdf}...`);
         await buildPdf(target);
       }
     }

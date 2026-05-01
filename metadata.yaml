@@ -6,8 +6,9 @@ institution: "Your Institution"
 department: "Your Department"
 degree: "PhD"
 abstract: |
-  Write your abstract here. This is a placeholder for your document abstract.
-  It can span multiple lines and will be formatted appropriately in the final PDF.
+  For those of you who hear a voice when you read these words, and those of you who can conjure one,
+   – there is a sense in which we might regard the audio you hear to be the result of
+   distributed synthesis.
 keywords: ["keyword1", "keyword2", "keyword3"]
 lang: en-US
 documentclass: article
