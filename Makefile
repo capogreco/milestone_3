@@ -1,11 +1,16 @@
 # Document Build System
 
-# Variables
-SOURCE = document.md
-OUTPUT = document.pdf
+# Build configuration
 BIBLIOGRAPHY = bibliography.bib
 CSL = apa.csl
 METADATA = metadata.yaml
+
+# Auto-discover .md files in the project root. README.md and other meta
+# files are excluded by name; everything else builds to a same-named .pdf.
+SOURCES := $(wildcard *.md)
+EXCLUDE := README.md CHANGELOG.md CONTRIBUTING.md LICENSE.md
+DOCS := $(filter-out $(EXCLUDE), $(SOURCES))
+PDFS := $(DOCS:.md=.pdf)
 
 PANDOC_FLAGS = \
 	--bibliography=$(BIBLIOGRAPHY) \
@@ -14,28 +19,31 @@ PANDOC_FLAGS = \
 	--number-sections \
 	--toc \
 	--citeproc \
+	--lua-filter=epigraph.lua \
 	--metadata-file=$(METADATA)
 
-# Default target
-all: pdf
+# Default target: build every discovered document
+all: $(PDFS)
 
-# Generate PDF with bibliography
-pdf: $(OUTPUT)
+# Backwards-compat alias
+pdf: all
 
-$(OUTPUT): $(SOURCE) $(BIBLIOGRAPHY) $(CSL) $(METADATA)
-	pandoc $(SOURCE) -o $(OUTPUT) $(PANDOC_FLAGS) 2>/dev/null || \
-	pandoc $(SOURCE) -o $(OUTPUT) $(PANDOC_FLAGS)
+# Generic pattern rule: any .md becomes its same-named .pdf
+%.pdf: %.md $(BIBLIOGRAPHY) $(CSL) $(METADATA) epigraph.lua
+	pandoc $< -o $@ $(PANDOC_FLAGS) 2>/dev/null || \
+	pandoc $< -o $@ $(PANDOC_FLAGS)
 
-# Clean generated files
+# Clean only generated PDFs (leaves source/reference PDFs untouched)
 clean:
-	rm -f $(OUTPUT)
+	rm -f $(PDFS)
 
-# Open the generated PDF (macOS)
-open: pdf
-	open $(OUTPUT)
+# Open the first generated PDF (macOS)
+open: all
+	@first_pdf=$$(echo $(PDFS) | awk '{print $$1}'); \
+	open "$$first_pdf"
 
 # Watch for changes and rebuild (requires entr: brew install entr)
 watch:
-	echo $(SOURCE) $(BIBLIOGRAPHY) | tr ' ' '\n' | entr make all
+	echo $(DOCS) $(BIBLIOGRAPHY) $(METADATA) epigraph.lua | tr ' ' '\n' | entr make all
 
 .PHONY: all pdf clean open watch

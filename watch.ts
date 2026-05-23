@@ -6,19 +6,60 @@ type WatchTarget = {
   outputPdf: string;
 };
 
-const WATCH_TARGETS: WatchTarget[] = [
-  {
-    relativePath: "./document.md",
-    buildCommand: ["make", "pdf"],
-    outputPdf: "document.pdf",
-  },
-];
+// Meta files to exclude from PDF generation — kept in sync with the
+// EXCLUDE list in the Makefile.
+const EXCLUDED_NAMES = new Set<string>([
+  "README.md",
+  "CHANGELOG.md",
+  "CONTRIBUTING.md",
+  "LICENSE.md",
+]);
 
-// Shared files that should trigger a rebuild of all targets when modified.
-const EXTRA_WATCH_PATHS = [
+async function discoverMarkdownTargets(): Promise<WatchTarget[]> {
+  const targets: WatchTarget[] = [];
+  for await (const entry of Deno.readDir(".")) {
+    if (!entry.isFile) continue;
+    if (!entry.name.endsWith(".md")) continue;
+    if (EXCLUDED_NAMES.has(entry.name)) continue;
+    const base = entry.name.slice(0, -".md".length);
+    targets.push({
+      relativePath: `./${entry.name}`,
+      buildCommand: ["make", `${base}.pdf`],
+      outputPdf: `${base}.pdf`,
+    });
+  }
+  return targets;
+}
+
+// Shared files that should trigger a rebuild of *all* targets when modified.
+// Filtered to those that actually exist on disk before passing to watchFs.
+const EXTRA_WATCH_CANDIDATES = [
   "./metadata.yaml",
   "./bibliography.bib",
+  "./epigraph.lua",
 ];
+
+async function existing(paths: string[]): Promise<string[]> {
+  const present: string[] = [];
+  for (const p of paths) {
+    try {
+      await Deno.stat(p);
+      present.push(p);
+    } catch {
+      // file not present in this project; skip
+    }
+  }
+  return present;
+}
+
+const WATCH_TARGETS = await discoverMarkdownTargets();
+const EXTRA_WATCH_PATHS = await existing(EXTRA_WATCH_CANDIDATES);
+
+if (WATCH_TARGETS.length === 0) {
+  console.log("⚠️  No .md files found in project root (after exclusions).");
+  console.log("    Excluded names: " + [...EXCLUDED_NAMES].join(", "));
+  Deno.exit(0);
+}
 
 console.log("🔄 Starting file watcher for Markdown sources:");
 for (const target of WATCH_TARGETS) {
@@ -39,7 +80,7 @@ async function buildPdf(target: WatchTarget) {
       stderr: "piped",
     });
 
-    const { code, stdout, stderr } = await process.output();
+    const { code, stdout: _stdout, stderr } = await process.output();
 
     if (code === 0) {
       console.log(`✅ ${target.outputPdf} generated successfully!`);
@@ -51,7 +92,7 @@ async function buildPdf(target: WatchTarget) {
         });
         await touchProcess.output();
         console.log("🔄 PDF updated for Skim");
-      } catch (refreshError) {
+      } catch (_refreshError) {
         console.log("⚠️  Could not update PDF timestamp");
       }
     } else {
@@ -59,12 +100,13 @@ async function buildPdf(target: WatchTarget) {
       console.error(new TextDecoder().decode(stderr));
     }
   } catch (error) {
-    console.error("❌ Error running build command:", error.message);
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("❌ Error running build command:", msg);
   }
   console.log("");
 }
 
-// Build initial PDF
+// Build initial PDFs
 for (const target of WATCH_TARGETS) {
   await buildPdf(target);
 }

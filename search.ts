@@ -491,6 +491,76 @@ function zoteroHeaders(apiKey: string) {
   };
 }
 
+// CrossRef enrichment — used as a fallback when Manubot returns thin metadata.
+// CrossRef is the authoritative DOI registrar for most academic publishers
+// (Springer, Wiley, Elsevier, Routledge, Taylor & Francis, etc.) and reliably
+// returns structured author/date/publisher data. Free, no API key required.
+
+interface CrossRefEnrichment {
+  creators?: Array<{ creatorType: string; firstName: string; lastName: string }>;
+  date?: string;
+  publisher?: string;
+  ISBN?: string;
+  DOI?: string;
+}
+
+async function fetchCrossRefEnrichment(doi: string): Promise<CrossRefEnrichment | null> {
+  try {
+    const res = await fetch(
+      `https://api.crossref.org/works/${encodeURIComponent(doi)}`,
+      {
+        headers: {
+          "Accept": "application/json",
+          "User-Agent": "academic-document-template (mailto:noreply@example.com)",
+        },
+      },
+    );
+    if (!res.ok) return null;
+    // deno-lint-ignore no-explicit-any
+    const body = await res.json() as any;
+    const m = body?.message;
+    if (!m) return null;
+
+    const enrichment: CrossRefEnrichment = { DOI: doi };
+
+    if (Array.isArray(m.author) && m.author.length > 0) {
+      enrichment.creators = m.author.map((a: { given?: string; family?: string }) => ({
+        creatorType: "author",
+        firstName: a.given ?? "",
+        lastName: a.family ?? "",
+      }));
+    }
+    // Editors are returned separately; promote them too if no authors were found
+    if ((!enrichment.creators || enrichment.creators.length === 0)
+        && Array.isArray(m.editor) && m.editor.length > 0) {
+      enrichment.creators = m.editor.map((a: { given?: string; family?: string }) => ({
+        creatorType: "editor",
+        firstName: a.given ?? "",
+        lastName: a.family ?? "",
+      }));
+    }
+
+    const parts = m.issued?.["date-parts"]?.[0];
+    if (Array.isArray(parts) && parts.length > 0) {
+      enrichment.date = parts.join("-");
+    } else if (m.created?.["date-parts"]?.[0]) {
+      enrichment.date = m.created["date-parts"][0].join("-");
+    }
+
+    if (typeof m.publisher === "string") {
+      enrichment.publisher = m.publisher;
+    }
+
+    if (Array.isArray(m.ISBN) && m.ISBN.length > 0) {
+      enrichment.ISBN = m.ISBN[0];
+    }
+
+    return enrichment;
+  } catch {
+    return null;
+  }
+}
+
 async function zoteroAdd(identifier: string) {
   const { apiKey, base } = await getZoteroCredentials();
 
@@ -535,6 +605,43 @@ async function zoteroAdd(identifier: string) {
     return;
   }
 
+  // Step 1.5: Enrich from CrossRef if Manubot returned thin metadata.
+  // Triggers when creators or date are missing — common with Springer book DOIs
+  // and some publisher landing pages that don't expose metadata in formats
+  // Manubot can scrape.
+  if (isDOI) {
+    for (const item of items) {
+      const itm = item as Record<string, unknown>;
+      const creators = itm.creators as Array<unknown> | undefined;
+      const hasNoCreators = !Array.isArray(creators) || creators.length === 0;
+      const hasNoDate = !itm.date;
+      if (!(hasNoCreators || hasNoDate)) continue;
+
+      console.log(dim("Manubot metadata is thin; enriching from CrossRef…"));
+      const enrichment = await fetchCrossRefEnrichment(identifier);
+      if (!enrichment) {
+        console.log(yellow("⚠ CrossRef lookup did not return data; record may be incomplete."));
+        continue;
+      }
+
+      if (hasNoCreators && enrichment.creators?.length) {
+        itm.creators = enrichment.creators;
+      }
+      if (hasNoDate && enrichment.date) {
+        itm.date = enrichment.date;
+      }
+      if (!itm.publisher && enrichment.publisher) {
+        itm.publisher = enrichment.publisher;
+      }
+      if (!itm.ISBN && enrichment.ISBN) {
+        itm.ISBN = enrichment.ISBN;
+      }
+      if (!itm.DOI && enrichment.DOI) {
+        itm.DOI = enrichment.DOI;
+      }
+    }
+  }
+
   // Step 2: Post item(s) to Zotero library
   // Clean up items for Zotero API - need to set itemType and remove some fields
   const zoteroItems = items.map((item: Record<string, unknown>) => {
@@ -576,6 +683,15 @@ async function zoteroAdd(identifier: string) {
       console.log(green("✓") + ` Added to Zotero: ${bold(data.title ?? "Untitled")}`);
       console.log(`    ${dim("Key:")} ${data.key}  ${dim("Type:")} ${data.itemType}`);
       if (data.DOI) console.log(`    ${dim("DOI:")} ${data.DOI}`);
+
+      // Sanity-check: if creators or date are still missing after enrichment,
+      // print a loud warning so the user knows to fix it manually.
+      const missing: string[] = [];
+      if (!Array.isArray(data.creators) || data.creators.length === 0) missing.push("creators");
+      if (!data.date) missing.push("date");
+      if (missing.length > 0) {
+        console.log(yellow(`    ⚠ Missing fields: ${missing.join(", ")} — edit this record in Zotero`));
+      }
     }
   }
 

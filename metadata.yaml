@@ -48,4 +48,21 @@ header-includes:
     % Enforce paragraph indenting after template adjustments
     \AtBeginDocument{\setlength{\parindent}{1.5em}\setlength{\parskip}{0pt}}
     ```
+  - |
+    ```{=latex}
+    % Epigraphs: section-opener quotes with right-flush attribution
+    % Custom definition — no external package required
+    % Usage in markdown:  \epigraph{Quote text.}{--- Author, \emph{Source} (Year)}
+    \newcommand{\epigraph}[2]{%
+      \par\vspace{1em}%
+      \begin{center}%
+      \begin{minipage}{0.6\textwidth}%
+        {\sloppy\setlength{\emergencystretch}{3em}\centering\small\itshape #1\par}%
+        \vspace{0.5em}%
+        {\raggedleft\small #2\par}%
+      \end{minipage}%
+      \end{center}%
+      \vspace{2em}%
+    }
+    ```
 ---
