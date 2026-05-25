@@ -1,4 +1,7 @@
 {
+  "features": {
+    "edit_prediction_provider": "none"
+  },
   "languages": {
     "Markdown": {
       "show_completions_on_input": false,
