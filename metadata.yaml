@@ -1,12 +1,15 @@
 ---
-title: "Your Document Title"
-author: "Your Name"
-date: "2025-11-14"
-institution: "Your Institution"
-department: "Your Department"
+title: "Distributing Synthesis Across Audience Devices"
+subtitle: |
+  The Technics, Ethics, & Aesthetics of Browser-based `\\`{=latex}
+  Co-located Network Music Performance
+author: "Thomas E Capogreco"
+date: "`\\today`{=latex}"
+institution: "RMIT"
+department: "School of Design"
 degree: "PhD"
 abstract: |
-  For those of you who hear a voice when you read these words, and those of you who can conjure one,
+  For those of you who hear a voice when you read these words, and those of you who can conjure one
    – there is a sense in which we might regard the audio you hear to be the result of
    distributed synthesis.
 keywords: ["keyword1", "keyword2", "keyword3"]

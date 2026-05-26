@@ -13,21 +13,23 @@ Theoretical directions that could anchor this:
 Attempting to define a single "Community of Practice" capable of contextualising this research adequately, elucidated some important aspects about the subject and situation of my research that are in tension with the schema delineated in Wenger's original [-@wengerCommunitiesPracticeLearning1998], and subsequent [-@wengerLearningLandscapesPractice2013] formulations.  This chapter will therefore be prefaced by a brief explanation regarding the term *Ecology of Practice* [@stengersIntroductoryNotesEcology2005], and why this term's capacity to conjure an entanglement of obligations and contexts (plural) might do a better job of clarifying the genealogy of this project's constituent commitments, than the term "Community of Practice".
 -->
 
-
 # Confluences of Practice & Constitutive Encounters
+
 <!--What you've just described is the chapter as autotheoretical in a precise sense. Not "personal narrative plus theory in parallel," but: the chapter performs the identification → indexation → inference chain it is theorising. You write about Crabtree and McLean because they constituted you; you were constituted by them via the musical scaffolding of their practices; the chapter is the inferential articulation of an identification that already happened. The chapter does what it theorises. This is exactly what Loveless means by research-creation — and Loveless is  already in your M2 bibliography, which means you can name this method without importing new apparatus. And "Confluences of Practice" reads even tighter now. It's not just two streams (Crabtree-lineage + McLean-lineage) meeting in your work — it's two streams meeting in you, which is itself the act the thesis is making an argument about. The title names the chapter's content and its method.-->
 
-This chapter aims to survey the creative practitioners with whom I have forged constitutive identifications, and to explicate the sets of commitments those identifications have implicitly subscribed me to.  Although communities are a part of this landscape of practice, I have avoided framing this section as "Community of Practice" to allow for the way in which we might understand this community relation to be the implied *subject* of experimental music, and how, in the case of many of these practitioners, the facilitating, theorising, and fashioning of exactly such communities of practice has become an explicit focus of their creative practice, rather than its *context*, per se.
+This chapter aims to survey the creative practitioners with whom I have forged constitutive identifications, and to explicate the sets of commitments those identifications have implicitly subscribed me to. Although communities are a part of this landscape of practice, I have avoided framing this section as "Community of Practice" to allow for the way in which we might understand this community relation to be the implied _subject_ of instrument design (and experimental music more broadly), and how for many of these practitioners, the cultivation of exactly such communities of practice can be more usefully understood to be a product of their creative practice _a posteriori_, rather than its _a priori_ context.
 
 ## Brian Crabtree & Kelli Cain
 
-Encountering the work of Brian Crabtree and Kelli Cain around 2007 felt like a breath of fresh air.  The photos of hardware music controllers manufactured by *monome* which began appearing on music-gear oriented internet forums around that time depicted a strikingly minimalist design logic, impressive craftmanship, and well-considered ergonomics. However, what really distinguished them most starkly was their embodiment of a very specific design principle: the objects were *open-ended*.  I would like to spend a moment unpacking what this means, and explaining why I believe this approach situates monome within what Braidotti defines as the *critical post-humanities*. [@braidottiTheoreticalFrameworkCritical2019]
+Encountering the work of _monome_ for the first time felt like a breath of fresh air. Although photos of their hardware music controllers (which began appearing on gear forums around 2008) depicted a brutally minimalist design logic, impressive craftmanship, and well-considered ergonomics, what was most striking about these objects was how they seemed to embody a very specific design attribute – they were _open-ended_. I would like to spend a moment unpacking what this means, and explaining why I believe this approach situates monome's design practice within what Braidotti defines as the _critical post-humanities_. [@braidottiTheoreticalFrameworkCritical2019]
 
-Human-centered design practices inevitibly begin with *empathy* – a fleshed-out picture of how and why the end-user will engage with the object of design. [@normanDesignEverydayThings2013] By holding this picture strongly in mind through the design process, the developed object caters well for those actual users whose needs and motivations fit the designer's imaginary depiction.   In this way we can understand that designed objects always carry with them a *subject position*: the shape of the type of human the user needs to be (or, importantly, *become*) in order for the designed object to be useful (or meaningful) to them. [@suchmanHumanmachineReconfigurationsPlans2007; @mortonHegelEcologyAesthetics2011; @disalvoAdversarialDesign2012]
+Human-centered design practices inevitibly begin with _empathy_ – a fleshed-out picture of how and why the end-user will engage with the object of design. [@normanDesignEverydayThings2013] The logic being that by holding this imaginary user strongly in mind through the design process, the designer can let their empathy for that imaginary user guide the creative process in such a way that the resolved design will cater to well for other users that fit that description.  In this way we can understand that designed objects always carry with them a _subject position_: the shape of the type of human the user needs to be (or, importantly, _become_) in order for the designed object to be useful (or meaningful) to them. [@suchmanHumanmachineReconfigurationsPlans2007; @mortonHegelEcologyAesthetics2011; @disalvoAdversarialDesign2012]
 
-What seemed to make the encounter with monome so refreshing was a kind of teleological agnosticism – the way the subject position implied by these objects seemed devoid of the regular assumptions regarding what they should be used *for*.  The mechanics of the object's affordances – both physical (button presses, encoder rotations, LED brightness levels, etc.) and connective (open sound control), were laid bare
+The problem for music instrument design is two-fold.  1) the field of music gear is highly commodified, placing specific pressures on the subject position implicit in commercial design processes [@thebergeAnySoundYou1997; @batesGearCulturesAudio2025], and 2) this subject position becomes especially conspicuous within the parameters of a music performance ritual. [@smallMusickingMeaningsPerforming1998; @frithPerformingRitesEvaluating1998; @hardjowirogoInstrumentalityConstructionInstrumental2016]  In the case of *musical expression*, it is exactly *who* the performer becomes when they interface with the musical instrument that is extruded into the semantic field as the signifier of a human. [@auslanderConcertPerformingMusical2021; @souzaMusicHandInstruments2017]
 
-We can understand this conceptual manouvre to be both a re-centering of systems level thinking, as proposed by @banathyDesigningSocialSystems1996, and a simultaneous, reciprocal de-centering of the ossified, vetruvian human figure, as described by @braidottiTheoreticalFrameworkCritical2019.  At a systems level, we can trace what is embedded to be a technological orientation inherited from the project of *open source*.  At the subject position level, I would like to argue that this teleological reduction embeds an expanded creative horizon, furnished with an extended set of possibilities regarding what *work* can be.
+What seemed to make the encounter with monome so refreshing was a kind of teleological agnosticism – the way the subject position implied by these objects seemed devoid of the regular assumptions regarding what they should be used _for_. The mechanics of the object's affordances – both physical (button presses, encoder rotations, LED brightness levels, etc.) and connective (open sound control), were laid bare
+
+We can understand this conceptual manouvre to be both a re-centering of systems level thinking, as proposed by @banathyDesigningSocialSystems1996, and a simultaneous, reciprocal de-centering of the ossified, vetruvian human figure, as described by @braidottiTheoreticalFrameworkCritical2019. At a systems level, we can trace what is embedded to be a technological orientation inherited from the project of _open source_. At the subject position level, I would like to argue that this teleological reduction embeds an expanded creative horizon, furnished with an extended set of possibilities regarding what _work_ can be.
 
 ### Open Source & the Deployment of Utopia
 
@@ -37,11 +39,11 @@ We can understand this conceptual manouvre to be both a re-centering of systems 
 --- @crabtreeMyceliaDoesNothingObjects2024 [p. 467]
 :::
 
-It is my contention that open source, like *synthesis*, is best understood as a material-discursive practice.  Both practices implicitly seek to untether the project of modernism from the project of capitalism, inasmuch as they represent an entanglement of technical knowledges and production logics with discursively responsive sets of normative commitments – a feature noteably abstracted to near-oblivion by the day-to-day mechanics of capitalist work relations. [@fisherPostcapitalistDesireFinal2020]  This normative freedom sits uncomfortably amongst the predatory injunctions of capital which inevitably function to exploit and extract value from exactly this system's capacity to facilitate autonomous, and therefore unpaid, forms of work.
+It is my contention that open source, like _synthesis_, is best understood as a material-discursive practice. Both practices implicitly seek to untether the project of modernism from the project of capitalism, inasmuch as they represent an entanglement of technical knowledges and production logics with discursively responsive sets of normative commitments – a feature noteably abstracted to near-oblivion by the day-to-day mechanics of capitalist work relations. [@fisherPostcapitalistDesireFinal2020] This normative freedom sits uncomfortably amongst the predatory injunctions of capital which inevitably function to exploit and extract value from exactly this system's capacity to facilitate autonomous, and therefore unpaid, forms of work.
 
-In this way we might understand the material plane of this material-discursive practice to display the properties of a complex system, replete with both structural vulnerabilities, often resulting in sudden shifts of seismic proportions; and adaptability, which we must sensibly attribute to the tenacity of the utopian commitments structuring its discursive articulations. [@hollandHiddenOrderHow2003]  Because of the combined effect of its unpredictability and tenacity, much discourse has emerged regarding the ways in which FOSS infrastructure articulates with an economic field dominated by massive technology corporations [@asparouhovaWorkingPublicMaking2020], and how open source nomenclature can produce paradoxically extractative material effects [@tkaczWikipediaPoliticsOpenness2015].
+In this way we might understand the material plane of this material-discursive practice to display the properties of a complex system, replete with both structural vulnerabilities, often resulting in sudden shifts of seismic proportions; and adaptability, which we must sensibly attribute to the tenacity of the utopian commitments structuring its discursive articulations. [@hollandHiddenOrderHow2003] Because of the combined effect of its unpredictability and tenacity, much discourse has emerged regarding the ways in which FOSS infrastructure articulates with an economic field dominated by massive technology corporations [@asparouhovaWorkingPublicMaking2020], and how open source nomenclature can produce paradoxically extractative material effects [@tkaczWikipediaPoliticsOpenness2015].
 
-It is with the complexity of this context in mind that we should understand monome's commitment to open source as not merely an *anarchic* gesture, as Crabtree himself describes it [-@crabtreeMyceliaDoesNothingObjects2024 p. 467], but also as a de-centering of the locus of design from a human orientation, to a systems orientation. [@suchmanHumanmachineReconfigurationsPlans2007]  Rather than insinuating that the object can take the user all the way to some enclosed, pre-fabricated utopia, the object, in monome's own words, "does nothing".  Any utopian potential the user might see in the object then becomes contingent on the user inhabiting an empowered subject position either equipped with forms of technological literacies required to unlock that potential, or, importantly, the disposition to learn them.  
+It is with the complexity of this context in mind that we should understand monome's commitment to open source as not merely an _anarchic_ gesture, as Crabtree himself describes it [-@crabtreeMyceliaDoesNothingObjects2024 p. 467], but also as a de-centering of the locus of design from a human orientation, to a systems orientation. [@suchmanHumanmachineReconfigurationsPlans2007] Rather than insinuating that the object can take the user all the way to some enclosed, pre-fabricated utopia, the object, in monome's own words, "does nothing". Any utopian potential the user might see in the object then becomes contingent on the user inhabiting an empowered subject position either equipped with forms of technological literacies required to unlock that potential, or, importantly, the disposition to learn them.
 
 In this way we can therefore understand utopia to be deployed not as marketing, but in the set of commitments that constitute the objects' subject position. In addition to implicating specific forms of work, these utopian logics, now housed in the constitutive commitments of users' subjectivities, have the opportunity to become operable in a sustained manner, at the point of these material objects' discursive articulation, via the action of their users' language – a feedback loop which, as mentioned earlier, is important in imbueing the material-discursive system with the attribute of adaptability.
 
@@ -54,14 +56,11 @@ and paths being traveled herein.
 --- @crabtreeMyceliaDoesNothingObjects2024 [p. 465]
 :::
 
-We might trace monome's commitment to open source back to when the pair met at University of California San Diego.  Crabtree studied under the tutelage of Miller Puckette and Tom Erbe, who are noteable here not merely because of the way in which their design thinking influenced monome, but because of their direct influence on my own creative practice and the project of distributed synthesis more specifically.  
-
+We might trace monome's commitment to open source back to when the pair met at University of California San Diego. Crabtree studied under the tutelage of Miller Puckette and Tom Erbe, who are noteable here not merely because of the way in which their design thinking influenced monome, but because of their direct influence on my own creative practice and the project of distributed synthesis more specifically.
 
 <!--Tom Erbe: merging analog and digital-->
 
-
 <!--Miller Puckette & the Graphical Programming Interface-->
-
 
 <!--#### Ursula le Guin-->
 
@@ -70,7 +69,6 @@ We might trace monome's commitment to open source back to when the pair met at U
 <!--#### Christopher Alexander's *Pattern Language*-->
 
 ### Mycelial Creativity
-
 
 <!--Brian Crabtree founded monome with Kelli Cain in 2005. Their first instrument, the *grid* — a sparse, agnostic matrix of unlabelled illuminated buttons — has since become the
 focal artefact of an extended community of artist-programmer-musicians who gather, share code, and develop instruments at the *lines* forum (llllllll.co). The grid's ecosystem
@@ -96,18 +94,13 @@ of two — and the productivity of that convergence is precisely what subsequent
  follows from and propagates this confluence as a structural feature, rather than a biographical accident.
  -->
 
+## Alex McLean
+
 \newpage
 
 # References
 
-
-
-
-
-
-
-
-<!-- 
+<!--
 
 > Books like Christopher Alexander's *Pattern Language* (1997) deeply influence Kelli and my impolse to shape architectural space - it emphasizes how our surroundings impact daily life (like an operating system). [@crabtreeMyceliaDoesNothingObjects2024, p. 457]
 - music is like architecture, or rather, works *in-conjunction* with architecture, not so much to construct meaning directly, although this also happens, but rather to *frontrun* a primeval sense of correctness that implicitly structures the apparatus of intelligibility required to parse content in the first place, ie. subjectivity itself.
